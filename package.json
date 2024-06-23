@@ -1,0 +1,20 @@
+{
+  "name": "rsl-begginer-discord-generator",
+  "version": "0.0.0",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "tsc && node dist/index.js",
+    "run": "ts-node index.ts",
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.1",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^6.2.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  }
+}

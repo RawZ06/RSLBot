@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  bot:
+    build: .
+    image: discord/rsl-beginner-bot
+    container_name: rsl-beginner-bot
