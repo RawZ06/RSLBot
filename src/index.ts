@@ -1,9 +1,9 @@
 import {executeCommand} from "./commands";
 import 'dotenv/config'
-const token = process.env.TOKEN;
-
 // Require the necessary discord.js classes
 import {ActivityType, Client, Events, GatewayIntentBits, Partials} from 'discord.js';
+
+const token = process.env.TOKEN;
 
 // Create a new client instance
 const client = new Client({
@@ -12,9 +12,10 @@ const client = new Client({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildPresences,
         GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildMessages
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
     ],
-    'partials': [Partials.Channel]
+    'partials': [Partials.Channel, Partials.Message]
 });
 
 // When the client is ready, run this code (only once).

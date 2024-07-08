@@ -1,11 +1,11 @@
 {
     "options": {
-        "bridge_tokens_max": 100,
-        "ganon_bosskey_tokens_max": 100,
+        "bridge_tokens_max": 50,
+        "ganon_bosskey_tokens_max": 50,
         "bridge_hearts_min": 4,
         "ganon_bosskey_hearts_min": 4,
-        "bridge_hearts_max": 20,
-        "ganon_bosskey_hearts_max": 20,
+        "bridge_hearts_max": 10,
+        "ganon_bosskey_hearts_max": 10,
         "triforce_goal_per_world_max": 100,
         "starting_items": true,
         "conditionals": {
@@ -27,7 +27,7 @@
             "invert_dungeons_mq_count": [false, 0],
             "replicate_old_child_trade": [false],
             "shuffle_valley_lake_exit": [true],
-            "select_one_pots_crates_freestanding": [true, 20, "1/1/1", "1/1/1"]
+            "select_one_pots_crates_freestanding": [false, 20, "1/1/1", "1/1/1"]
         },
         "tricks": [
             "logic_fewer_tunic_requirements",
@@ -82,13 +82,13 @@
             "geometric": true
         },
         "mix_entrance_pools": {
-            "global_enable_percentage": 50,
+            "global_enable_percentage": 0,
             "geometric": false,
             "opt_percentage": {
-                "Interior": 100,
-                "GrottoGrave": 100,
-                "Dungeon": 100,
-                "Overworld": 20
+                "Interior": 0,
+                "GrottoGrave": 0,
+                "Dungeon": 0,
+                "Overworld": 0
             }
         },
         "misc_hints": {
@@ -277,8 +277,8 @@
         },
         "open_kakariko": {
             "open": 1,
-            "zelda": 1,
-            "closed": 0
+            "zelda": 0,
+            "closed": 1
         },
         "open_door_of_time": {
             "true": 1,
@@ -286,7 +286,7 @@
         },
         "zora_fountain": {
             "closed": 1,
-            "adult": 1,
+            "adult": 0,
             "open": 1
         },
         "gerudo_fortress": {
