@@ -28,7 +28,7 @@ client.once(Events.ClientReady, readyClient => {
 // When the client receives a message, run this code
 client.on("messageCreate", (message) => {
     if (message.content.startsWith("!")) {
-        executeCommand(message, message.content.slice(1));
+        executeCommand(message, message.content.slice(1).split(" ")[0], message.content.split(" ").slice(1));
     }
 });
 

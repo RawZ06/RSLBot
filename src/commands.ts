@@ -1,48 +1,85 @@
 import {Message} from "discord.js";
 import {clearDirectory, generate, lsPatches} from "./execute";
 
-export function executeCommand(message: Message, command: string): void {
+function getWeightFileFromCommand(args: string[]) {
+    if(args.length === 0) {
+        return "rsl_season6_beginner.json"
+    } else if(args[0] === 'th-ban') {
+        return "rsl_season6_beginner.json"
+    } else if(args[0] === 'classic') {
+        return null;
+    }
+    else {
+        throw new Error(`Type ${args[0]} unknwon, please regenerate with th-ban, classic or nothing args`)
+    }
+}
+
+function getWeightMessage(args: string[]) {
+    if(args.length === 0) {
+        return "Beginner S6"
+    } else if(args[0] === 'th-ban') {
+        return "Beginner S6 without Triforce Hunt"
+    } else if(args[0] === 'classic') {
+        return "Classique S6";
+    }
+}
+
+export async function executeCommand(message: Message, command: string, args: string[]): Promise<void> {
     switch (command) {
         case "ping":
             message.channel.send("pong!");
             break;
         case "seed":
-            message.channel.send("Seed generating");
-            generate("rsl_season6_beginner.json").then(async (result) => {
-                lsPatches().then(async (patches) => {
-                    const patchFiles = patches.split("\n");
-                    if(result.length === 0) {
-                        console.error("No seed generated")
-                        message.channel.send("No seed generated, please retry or contact RawZ06")
-                        return;
-                    }
-                    const seed = result[0].split(".")[0];
-                    for (const patch of patchFiles) {
-                        if (patch.includes(seed) && patch.includes("zpf")) {
-                            message.channel.send({files: ["plando-random-settings/patches/" + patch]});
-                        }
-                        if (patch.includes(seed) && patch.includes("Spoiler")) {
-                            message.channel.send({
-                                files: [{
-                                    attachment: "plando-random-settings/patches/" + patch,
-                                    name: "SPOILER_" + patch
-                                }]
-                            });
-                        }
-                    }
-                    setTimeout(async () => await clearDirectory(seed).catch(err => {
-                        console.error(err);
-                        message.channel.send("An error occurred to remove a seed generated")
-                    }), 1000);
-                    console.log(`[${new Date().toISOString()}] Seed ${seed} generated`)
-                }).catch(err => {
-                    console.error(err);
-                    message.channel.send("An error occurred to get a seed generated")
-                });
-            }).catch(err => {
+            let weight;
+            try {
+                weight = getWeightFileFromCommand(args);
+            } catch(e) {
+                message.channel.send(`Type ${args[0]} unknwon, please regenerate with th-ban, classic or nothing args`);
+                return;
+                
+            }
+            const weightMessage = getWeightMessage(args)
+            message.channel.send(`Seed generating with weights ${weightMessage}`);
+            const result = await generate(weight).catch(err => {
                 console.error(err);
                 message.channel.send("An error occurred to generate a seed")
+                return [] as string[]
             });
+            if(result.length === 0) {
+                console.error("No seed generated")
+                message.channel.send("No seed generated, please retry or contact RawZ06")
+                return;
+            }
+            const patches = await lsPatches().catch(err => {
+                console.error(err);
+                message.channel.send("An error occurred to generate a seed")
+                return null as string;
+            });
+            if(patches === null) {
+                console.error("No seed generated")
+                message.channel.send("No seed generated, please retry or contact RawZ06")
+                return;
+            }
+            const patchFiles = patches.split("\n");
+            const seed = result[0].split(".")[0];
+            for (const patch of patchFiles) {
+                if (patch.includes(seed) && patch.includes("zpf")) {
+                    message.channel.send({files: ["plando-random-settings/patches/" + patch]});
+                }
+                if (patch.includes(seed) && patch.includes("Spoiler")) {
+                    message.channel.send({
+                        files: [{
+                            attachment: "plando-random-settings/patches/" + patch,
+                            name: "SPOILER_" + patch
+                        }]
+                    });
+                }
+            }
+            setTimeout(async () => await clearDirectory(seed).catch(err => {
+                console.error(err);
+                message.channel.send("An error occurred to remove a seed generated")
+            }), 1000);
+            console.log(`[${new Date().toLocaleString()}] Seed ${seed} with weights ${weight ?? 'standard s6'} generated by ${message.author.username}`)
             break;
         default:
             message.channel.send("Unknown command");

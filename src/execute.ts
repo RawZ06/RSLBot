@@ -3,9 +3,11 @@ import { exec } from 'child_process';
 export function generate(weight: string): Promise<string[]> {
     // Execute command python3 plando-random-settings/RandomSettingsGenerator.py --override ${weight}
     // This is a placeholder for the actual implementation
-    console.log(`Generating settings with weight ${weight}`);
+    console.log(`Generating settings with weight ${weight ?? 'standard s6'}`);
 
-    return new Promise(((resolve, reject) => exec(`cd plando-random-settings; python3 RandomSettingsGenerator.py --override weights/${weight}`, (error, stdout, stderr) => {
+    const commandLine = weight ? `cd plando-random-settings; python3 RandomSettingsGenerator.py --override weights/${weight}` : 'cd plando-random-settings; python3 RandomSettingsGenerator.py'
+
+    return new Promise(((resolve, reject) => exec(commandLine, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             reject(error);
