@@ -39,6 +39,10 @@ export async function executeCommand(message: Message, command: string, args: st
             const shuffle = new Shuffle()
             const elements = args[0] ? parseInt(args[0]) : 5;
             const choices = shuffle.getRandomSettings(elements);
+            if(choices === null) {
+                message.channel.send("Impossible to generate more than 57 settings, aborted")
+                return;
+            }
             const weights = shuffle.generateWeights(choices);
             const uuid = uuidv4();
             const filename = "shuffle_" + uuid + ".json"

@@ -245,6 +245,9 @@ import * as fs from 'fs'
 
 export class Shuffle {
     getRandomSettings(n) {
+        if(n > settings_allowed) {
+            return null;
+        }
         const weightedList = [] as Array<string|string[]>;
         settings_allowed.forEach(setting => {
             const count = setting.weight;
