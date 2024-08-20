@@ -45,3 +45,15 @@ export function lsPatches(): Promise<string> {
         resolve(stdout);
     })));
 }
+
+export function lsWeights(): Promise<string> {
+    return new Promise(((resolve, reject) => exec(`ls custom_weights`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            reject(error);
+        }
+        // console.log(`stdout lsPatches: ${stdout}`);
+        // console.error(`stderr lsPatches: ${stderr}`);
+        resolve(stdout);
+    })));
+}

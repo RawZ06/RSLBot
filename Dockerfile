@@ -34,6 +34,7 @@ COPY rom/* /usr/src/app/plando-random-settings
 
 # Copy weights
 COPY custom_weights/* /usr/src/app/plando-random-settings/weights/
+COPY custom_weights /usr/src/app/custom_weights
 
 # Copy env
 COPY .env /usr/src/app
