@@ -239,9 +239,31 @@ const settings_allowed = [
         "value": "ruto_already_f1_jabu",
         "weight": 1
     }
-]
+] as const
 
 import * as fs from 'fs'
+
+export function parseArguments(args: string[]) {
+    // Valeurs par défaut
+    let result = {
+        count: 5,
+        noOutput: false,
+        weight: false
+    };
+
+    // Parcours du tableau pour assigner les valeurs
+    args.forEach(arg => {
+        if (typeof arg === 'string' && /^\d+$/.test(arg)) {
+            result.count = parseInt(arg, 10);
+        } else if (arg === 'no-output') {
+            result.noOutput = true;
+        } else if (arg === 'weights') {
+            result.weight = true;
+        }
+    });
+
+    return result;
+}
 
 export class Shuffle {
     getRandomSettings(n) {
@@ -252,7 +274,10 @@ export class Shuffle {
         settings_allowed.forEach(setting => {
             const count = setting.weight;
             for (let i = 0; i < count; i++) {
-                weightedList.push(setting.value);
+                if(Array.isArray(setting.value))
+                    weightedList.push(setting.value);
+                else 
+                    weightedList.push(setting.value + '');
             }
         });
     
@@ -302,5 +327,9 @@ export class Shuffle {
                 console.error(err);
             }
         }, 1000);
+    }
+
+    getWeights() {
+        return 'setting;weight\n' + settings_allowed.map((setting) => setting.value.toString() + ';' + setting.weight).join('\n')
     }
 }

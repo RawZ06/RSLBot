@@ -1,6 +1,6 @@
-import {Message} from "discord.js";
+import {Attachment, AttachmentBuilder, Message} from "discord.js";
 import { SeedGenerator } from "./generate";
-import { Shuffle } from "./shuffle";
+import { parseArguments, Shuffle } from "./shuffle";
 import { v4 as uuidv4 } from 'uuid';
 
 async function generator(seedGenerator: SeedGenerator, message: Message, weightFile: string) {
@@ -37,19 +37,28 @@ export async function executeCommand(message: Message, command: string, args: st
             break;
         case "shuffle":
             const shuffle = new Shuffle()
-            const elements = args[0] ? parseInt(args[0]) : 5;
-            const choices = shuffle.getRandomSettings(elements);
+            const {count, noOutput, weight} = parseArguments(args);
+            if(weight) {
+                const attachmentBuilder = new AttachmentBuilder(Buffer.from(shuffle.getWeights(), 'utf-8'), {name : 'weights.csv'});
+                message.channel.send({files: [attachmentBuilder]});
+                return;
+            }
+            const choices = shuffle.getRandomSettings(count);
             if(choices === null) {
                 message.channel.send("Impossible to generate more than 57 settings, aborted")
                 return;
             }
-            const weights = shuffle.generateWeights(choices);
-            const uuid = uuidv4();
-            const filename = "shuffle_" + uuid + ".json"
-            shuffle.writeFile(filename, weights)
             message.channel.send("Seed generating with only this settings : || " + choices.toString() + " ||")
-            await generator(seedGenerator, message, filename)
-            shuffle.rmFile(filename);
+            if(!noOutput) {
+                const weights = shuffle.generateWeights(choices);
+                const uuid = uuidv4();
+                const filename = "shuffle_" + uuid + ".json"
+                shuffle.writeFile(filename, weights)
+                await generator(seedGenerator, message, filename)
+                shuffle.rmFile(filename);
+            } else {
+                message.channel.send("Seed no generated, because no-output is on")
+            }
         default:
             break;
     }
