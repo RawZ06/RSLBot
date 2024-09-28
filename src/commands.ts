@@ -30,10 +30,14 @@ export async function executeCommand(message: Message, command: string, args: st
             message.channel.send("pong!");
             break;
         case "seed":
-            const weightFile = seedGenerator.getWeightFile(args);
-            const weightMessage = seedGenerator.getWeightMessage(args)
-            message.channel.send(`Seed generating with weights ${weightMessage}`);
-            generator(seedGenerator, message, weightFile)
+            try {
+                const weightFile = seedGenerator.getWeightFile(args);
+                const weightMessage = seedGenerator.getWeightMessage(args)
+                message.channel.send(`Seed generating with weights ${weightMessage}`);
+                generator(seedGenerator, message, weightFile)
+            } catch(e) {
+                message.channel.send(e.toString())
+            }
             break;
         case "shuffle":
             const shuffle = new Shuffle()
