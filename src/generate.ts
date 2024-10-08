@@ -10,26 +10,34 @@ export class SeedGenerator {
 
     getWeightMessage(args: string[]): string {
         if (args.length === 0) {
-            return "Beginner S6";
+            return "Beginner S7";
         } else if (args[0] === 'th-ban') {
+            return "Beginner S7 without Triforce Hunt";
+        } else if (args[0] === 's6') {
+            return "Beginner S6";
+        } else if (args[0] === 's6-th-ban') {
             return "Beginner S6 without Triforce Hunt";
         } else if (args[0] === 'classic') {
-            return "Classic S6";
+            return "Classic S7";
         } else {
-            throw new Error(`Type ${args[0]} unknown, please regenerate with th-ban, classic or nothing args`);
+            throw new Error(`Type ${args[0]} unknown, please regenerate with s6, s6-th-ban, s7-th-ban, classic or nothing args`);
         }
     }
 
     getWeightFile(args: string[]): string | null {
         if (args.length === 0) {
-            return "rsl_season6_beginner.json";
+            return "rsl_season7_beginner.json";
         } else if (args[0] === 'th-ban') {
+            return "rsl_season7_beginner-th-ban.json";
+        } else if (args[0] === 's6') {
+            return "rsl_season6_beginner.json";
+        } else if (args[0] === 's6-th-ban') {
             return "rsl_season6_beginner-th-ban.json";
         } else if (args[0] === 'classic') {
             return null;
         } else {
-            this.message.channel.send(`Type ${args[0]} unknown, please regenerate with th-ban, classic or nothing args`);
-            throw new Error(`Type ${args[0]} unknown, please regenerate with th-ban, classic or nothing args`);
+            this.message.channel.send(`Type ${args[0]} unknown, please regenerate with s6, s6-th-ban, s7-th-ban, classic or nothing args`);
+            throw new Error(`Type ${args[0]} unknown, please regenerate with s6, s6-th-ban, s7-th-ban, classic or nothing args`);
         }
     }
 
