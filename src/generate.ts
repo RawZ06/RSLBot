@@ -19,7 +19,9 @@ export class SeedGenerator {
             return "Beginner S6 without Triforce Hunt";
         } else if (args[0] === 'classic') {
             return "Classic S7";
-        } else {
+        } else if (args[0] === 'classic-erow-ban') {
+            return "Classic S7 without ER OW";
+        } {
             throw new Error(`Type ${args[0]} unknown, please regenerate with s6, s6-th-ban, s7-th-ban, classic or nothing args`);
         }
     }
@@ -33,6 +35,8 @@ export class SeedGenerator {
             return "rsl_season6_beginner.json";
         } else if (args[0] === 's6-th-ban') {
             return "rsl_season6_beginner-th-ban.json";
+        } else if (args[0] === 'classic-erow-ban') {
+            return "rsl_season7-erowban.json";
         } else if (args[0] === 'classic') {
             return null;
         } else {
