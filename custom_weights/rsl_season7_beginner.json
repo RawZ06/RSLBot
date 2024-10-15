@@ -714,8 +714,8 @@
             "false": 1
         },
         "shuffle_enemy_spawns": {
-            "off": 17,
-            "all": 1,
+            "off": 18,
+            "all": 0,
             "bosses": 1,
             "regional": 1
         },
