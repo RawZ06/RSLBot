@@ -2,6 +2,7 @@ import {executeCommand} from "./commands";
 import 'dotenv/config'
 // Require the necessary discord.js classes
 import {ActivityType, Client, Events, GatewayIntentBits, Partials} from 'discord.js';
+import { Logger } from "./logger/logger";
 
 const token = process.env.TOKEN;
 
@@ -22,13 +23,13 @@ const client = new Client({
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, readyClient => {
-    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    Logger.info(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
 // When the client receives a message, run this code
 client.on("messageCreate", (message) => {
     if (message.content.startsWith("!")) {
-        console.log(`${message.author.username} : ${message.content}`)
+        Logger.info(`${message.author.username} : ${message.content}`)
         executeCommand(message, message.content.slice(1).split(" ")[0], message.content.split(" ").slice(1));
     }
 });

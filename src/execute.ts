@@ -1,9 +1,10 @@
 import { exec } from 'child_process';
+import { Logger } from './logger/logger';
 
 export function generate(weight: string): Promise<string[]> {
     // Execute command python3 plando-random-settings/RandomSettingsGenerator.py --override ${weight}
     // This is a placeholder for the actual implementation
-    console.log(`Generating settings with weight ${weight ?? 'standard s6'}`);
+    Logger.info(`Generating settings with weight ${weight ?? 'standard s7'}`);
 
     const commandLine = weight ? `cd plando-random-settings; python3 RandomSettingsGenerator.py --override weights/${weight}` : 'cd plando-random-settings; python3 RandomSettingsGenerator.py'
 

@@ -1,5 +1,6 @@
 import { Message } from "discord.js";
 import { clearDirectory, generate, lsPatches } from "./execute";
+import { Weight } from "./weights/weight";
 
 export class SeedGenerator {
     private message: Message;
@@ -9,40 +10,15 @@ export class SeedGenerator {
     }
 
     getWeightMessage(args: string[]): string {
-        if (args.length === 0) {
-            return "Beginner S7";
-        } else if (args[0] === 'th-ban') {
-            return "Beginner S7 without Triforce Hunt";
-        } else if (args[0] === 's6') {
-            return "Beginner S6";
-        } else if (args[0] === 's6-th-ban') {
-            return "Beginner S6 without Triforce Hunt";
-        } else if (args[0] === 'classic') {
-            return "Classic S7";
-        } else if (args[0] === 'classic-erow-ban') {
-            return "Classic S7 without ER OW";
-        } {
-            throw new Error(`Type ${args[0]} unknown, please regenerate with s6, s6-th-ban, s7-th-ban, classic or nothing args`);
-        }
+        return Weight.getWeightMessage(args[0]);
     }
 
     getWeightFile(args: string[]): string | null {
-        if (args.length === 0) {
-            return "rsl_season7_beginner.json";
-        } else if (args[0] === 'th-ban') {
-            return "rsl_season7_beginner-th-ban.json";
-        } else if (args[0] === 's6') {
-            return "rsl_season6_beginner.json";
-        } else if (args[0] === 's6-th-ban') {
-            return "rsl_season6_beginner-th-ban.json";
-        } else if (args[0] === 'classic-erow-ban') {
-            return "rsl_season7-erowban.json";
-        } else if (args[0] === 'classic') {
-            return null;
-        } else {
-            this.message.channel.send(`Type ${args[0]} unknown, please regenerate with s6, s6-th-ban, s7-th-ban, classic or nothing args`);
-            throw new Error(`Type ${args[0]} unknown, please regenerate with s6, s6-th-ban, s7-th-ban, classic or nothing args`);
-        }
+        return Weight.getWeightFile(this.message, args[0]);
+    }
+
+    getDeprecated(args: string[]): boolean {
+        return Weight.getDeprecated(args[0]);
     }
 
     async generateSeed(weightFile: string): Promise<string[]> {

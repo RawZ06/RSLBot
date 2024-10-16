@@ -4,8 +4,10 @@
   "scripts": {
     "tsc": "tsc",
     "start": "tsc && node dist/index.js",
+    "test": "tsc && node --test **/*.test.js",
     "run": "ts-node index.ts",
-    "dev": "tsc-watch --onSuccess \"node dist/index.js\""
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\"",
+    "cp": "cp ./custom_weights/rsl_season* ./plando-random-settings/weights"
   },
   "devDependencies": {
     "@types/node": "^20.14.1",

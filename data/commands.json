@@ -1,0 +1,46 @@
+{
+    "seed": [
+        {
+            "file": "rsl_season7_beginner.json",
+            "name": "Beginner S7",
+            "argument": null,
+            "deprecated": false
+        },
+        {
+            "file": "rsl_season7_beginner-th-ban.json",
+            "name": "Beginner S7 without Triforce Hunt",
+            "argument": "th-ban",
+            "deprecated": true
+        },
+        {
+            "file": "rsl_season6_beginner.json",
+            "name": "Beginner S6",
+            "argument": "s6",
+            "deprecated": false
+        },
+        {
+            "file": "rsl_season6_beginner-th-ban.json",
+            "name": "Beginner S6 without Triforce Hunt",
+            "argument": "s6-th-ban",
+            "deprecated": true
+        },
+        {
+            "file": "rsl_season7-erowban.json",
+            "name": "Classic S7 without ER OW",
+            "argument": "classic-erow-ban",
+            "deprecated": true
+        },
+        {
+            "file": "rsl_season7.json",
+            "name": "Classic S7",
+            "argument": "classic",
+            "deprecated": false
+        },
+        {
+            "file": "rsl_season6.json",
+            "name": "Classic S6",
+            "argument": "classic-s6",
+            "deprecated": false
+        }
+    ]
+}
