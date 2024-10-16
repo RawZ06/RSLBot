@@ -5,6 +5,7 @@ import * as CustomSeed from "./custom"
 import { v4 as uuidv4 } from 'uuid';
 import { Logger } from "./logger/logger";
 import * as fs from 'fs'
+import { Weight } from "./weights/weight";
 const helpMessageCS = fs.readFileSync("./data/help-cs.txt", "utf-8")
 
 async function generator(seedGenerator: SeedGenerator, message: Message, weightFile: string, sendWeightFile = false) {
@@ -33,14 +34,11 @@ export async function executeCommand(message: Message, command: string, args: st
         case "ping":
             message.channel.send("pong!");
             break;
-        case "seed":
+        case "!seed":
             try {
                 const weightFile = seedGenerator.getWeightFile(args);
                 const weightMessage = seedGenerator.getWeightMessage(args)
-                const deprecated = seedGenerator.getDeprecated(args);
-                if(deprecated) {
-                    message.channel.send(`This command with ${weightMessage} is deprecated, please use !customseed instead to ban settings`);
-                }
+                message.channel.send(`This command !!seed is deprecated, please use !seed instead, you can use this command if !seed doesn't work`);
                 message.channel.send(`Seed generating with weights ${weightMessage}`);
                 generator(seedGenerator, message, weightFile)
             } catch (e) {
@@ -75,7 +73,7 @@ export async function executeCommand(message: Message, command: string, args: st
             } catch (e) {
                 message.channel.send(e.toString())
             }
-        case "customseed":
+        case "seed":
             try {
                 const custom = new CustomSeed.CustomSeed()
                 const { typeSeed, ban, list, help: helpCS } = CustomSeed.parseArguments(args);
@@ -93,7 +91,16 @@ export async function executeCommand(message: Message, command: string, args: st
                     return;
                 }
                 const banned = custom.getRandomSettings(ban);
-                message.channel.send("Seed generating without : " + banned.toString())
+                if(banned && banned.length) {
+                    message.channel.send(`Seed generating ${Weight.getWeightMessage(typeSeed)} without : ${banned.toString()}`)
+                }
+                else {
+                    message.channel.send(`Seed generating ${Weight.getWeightMessage(typeSeed)}`)
+                }
+                const deprecated = Weight.getDeprecated(typeSeed);
+                if(deprecated) {
+                    message.channel.send("# " + deprecated)
+                }
                 const weights = custom.generateWeights(message, typeSeed, banned);
                 const uuid = uuidv4();
                 const filename = "custom_" + uuid + ".json"

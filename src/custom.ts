@@ -7,7 +7,7 @@ export function parseArguments(args: string[]) {
     // Valeurs par défaut
     let result = {
         ban: "",
-        typeSeed: "rsl_season7_beginner.json",
+        typeSeed: null,
         list: false,
         help: false
     };
@@ -16,12 +16,12 @@ export function parseArguments(args: string[]) {
     args.forEach(arg => {
         if (arg.startsWith('ban=')) {
             result.ban = arg.slice(4)
-        } else if (arg.startsWith('type=')) {
-            result.typeSeed = arg.slice(5)
         } else if (arg === 'list') {
             result.list = true
         } else if (arg === 'help') {
             result.help = true
+        } else {
+            result.typeSeed = arg
         }
     });
 

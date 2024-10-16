@@ -17,10 +17,6 @@ export class SeedGenerator {
         return Weight.getWeightFile(this.message, args[0]);
     }
 
-    getDeprecated(args: string[]): boolean {
-        return Weight.getDeprecated(args[0]);
-    }
-
     async generateSeed(weightFile: string): Promise<string[]> {
         try {
             return await generate(weightFile);

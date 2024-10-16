@@ -33,7 +33,7 @@ export class Weight {
         throw new Error(`Type ${argument || 'nothing'} unknown, please regenerate with one of the following arguments: ${possibleArgs}`);
     }
 
-    static getDeprecated(argument: string): boolean | null {
+    static getDeprecated(argument: string): string | null {
         const foundSeed = argument ? settings.seed.find(seed => seed.argument === argument) : settings.seed.find(seed => seed.argument === null);
     
         if (foundSeed) {
