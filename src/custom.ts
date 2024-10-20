@@ -54,9 +54,10 @@ export class CustomSeed {
         const vanilla = this.loadVanilla();
         const RSL = this.loadRSL(weightFile);
         for(let choice of choices) {
+            console.log('>', choice)
             RSL.weights[choice] = vanilla.weights[choice]
         }
-        return vanilla;
+        return RSL;
     }
 
     writeFile(filename, weights) {

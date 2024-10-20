@@ -32,9 +32,11 @@ export async function executeCommand(message: Message, command: string, args: st
     const seedGenerator = new SeedGenerator(message);
     switch (command) {
         case "ping":
+            Logger.info(`${message.author.username} : ${message.content}`)
             message.channel.send("pong!");
             break;
         case "!seed":
+            Logger.info(`${message.author.username} : ${message.content}`)
             try {
                 const weightFile = seedGenerator.getWeightFile(args);
                 const weightMessage = seedGenerator.getWeightMessage(args)
@@ -46,6 +48,7 @@ export async function executeCommand(message: Message, command: string, args: st
             }
             break;
         case "shuffle":
+            Logger.info(`${message.author.username} : ${message.content}`)
             try {
                 const shuffle = new Shuffle.Shuffle()
                 const { count, noOutput, weight } = Shuffle.parseArguments(args);
@@ -73,7 +76,9 @@ export async function executeCommand(message: Message, command: string, args: st
             } catch (e) {
                 message.channel.send(e.toString())
             }
+            break;
         case "seed":
+            Logger.info(`${message.author.username} : ${message.content}`)
             try {
                 const custom = new CustomSeed.CustomSeed()
                 const { typeSeed, ban, list, help: helpCS } = CustomSeed.parseArguments(args);
@@ -110,6 +115,7 @@ export async function executeCommand(message: Message, command: string, args: st
             } catch (e) {
                 message.channel.send(e.toString())
             }
+            break;
         default:
             break;
     }
