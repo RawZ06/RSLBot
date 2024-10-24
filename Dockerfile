@@ -24,7 +24,7 @@ COPY tsconfig.json /usr/src/app
 RUN git clone https://github.com/matthewkirby/plando-random-settings.git /usr/src/app/plando-random-settings
 
 # Checkout commit
-RUN ( cd plando-random-settings && git checkout 2e8d548 )
+RUN (cd plando-random-settings && git checkout 2e8d548777bae52e1bd1e6a382b4e6da620fff1c)
 
 # Install pip dependencies
 RUN pip3 install requests --break-system-packages
