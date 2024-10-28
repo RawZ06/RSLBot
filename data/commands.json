@@ -7,12 +7,6 @@
             "deprecated": null
         },
         {
-            "file": "rsl_random.json",
-            "name": "Chaos Random",
-            "argument": "chaos",
-            "deprecated": null
-        },
-        {
             "file": "rsl_season7_beginner-th-ban.json",
             "name": "Beginner S7 without Triforce Hunt",
             "argument": "th-ban",
