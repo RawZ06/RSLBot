@@ -8,7 +8,7 @@ import * as fs from 'fs'
 import { Weight } from "./weights/weight";
 const helpMessageCS = fs.readFileSync("./data/help-cs.txt", "utf-8")
 
-async function generator(seedGenerator: SeedGenerator, message: Message, weightFile: string, sendWeightFile = false) {
+async function generator(seedGenerator: SeedGenerator, message: Message, weightFile: string) {
     const result = await seedGenerator.generateSeed(weightFile)
     if (result.length === 0) {
         console.error("No seed generated")
@@ -68,7 +68,7 @@ export async function executeCommand(message: Message, command: string, args: st
                     const uuid = uuidv4();
                     const filename = "shuffle_" + uuid + ".json"
                     shuffle.writeFile(filename, weights)
-                    await generator(seedGenerator, message, filename, true)
+                    await generator(seedGenerator, message, filename)
                     shuffle.rmFile(filename);
                 } else {
                     message.channel.send("Seed no generated, because no-output is on")
@@ -110,7 +110,7 @@ export async function executeCommand(message: Message, command: string, args: st
                 const uuid = uuidv4();
                 const filename = "custom_" + uuid + ".json"
                 custom.writeFile(filename, weights)
-                await generator(seedGenerator, message, filename, true)
+                await generator(seedGenerator, message, filename)
                 custom.rmFile(filename);
             } catch (e) {
                 message.channel.send(e.toString())

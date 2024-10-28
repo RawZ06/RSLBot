@@ -13,13 +13,13 @@ export function generate(weight: string): Promise<string[]> {
             console.error(`exec error: ${error}`);
             reject(error);
         }
-        // console.log(`stdout generate: ${stdout}`);
-        // console.error(`stderr generate: ${stderr}`);
         const files = [
-            stdout.split("Creating Patch File: ")[1].split("\n")[0],
-            stdout.split("Created spoiler log at: ")[1].split("\n")[0]
+            stdout.split("Creating Patch File: ")[1]?.split("\n")[0],
+            stdout.split("Created spoiler log at: ")[1]?.split("\n")[0]
         ];
-        resolve(files);
+        if(files.filter(e => e).length === 2)
+            resolve(files);
+        else reject(stdout)
     })));
 }
 
