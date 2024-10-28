@@ -9,7 +9,7 @@
         {
             "file": "rsl_random.json",
             "name": "Chaos Random",
-            "argument": "random",
+            "argument": "chaos",
             "deprecated": null
         },
         {
