@@ -46,4 +46,18 @@ export class Weight {
         
         throw new Error(`Type ${argument || 'nothing'} unknown, please regenerate with one of the following arguments: ${possibleArgs}`);
     }
+
+    static getWarning(argument: string): string | null {
+        const foundSeed = argument ? settings.seed.find(seed => seed.argument === argument) : settings.seed.find(seed => seed.argument === null);
+    
+        if (foundSeed) {
+            return foundSeed.warning;
+        }
+    
+        const possibleArgs = settings.seed
+            .map(seed => seed.argument || 'nothing')
+            .join(', ');
+        
+        throw new Error(`Type ${argument || 'nothing'} unknown, please regenerate with one of the following arguments: ${possibleArgs}`);
+    }
 }

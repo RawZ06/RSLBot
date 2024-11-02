@@ -101,8 +101,8 @@
         },
         "logic_rules": {
             "glitchless": 1,
-            "glitched": 1,
-            "none": 1
+            "glitched": 0,
+            "none": 0
         },
         "shuffle_freestanding_items": {
             "off": 1,

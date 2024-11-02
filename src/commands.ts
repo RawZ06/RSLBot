@@ -106,6 +106,10 @@ export async function executeCommand(message: Message, command: string, args: st
                 if(deprecated) {
                     message.channel.send("# " + deprecated)
                 }
+                const warning = Weight.getWarning(typeSeed);
+                if(warning) {
+                    message.channel.send("## " + warning)
+                }
                 const weights = custom.generateWeights(message, typeSeed, banned);
                 const uuid = uuidv4();
                 const filename = "custom_" + uuid + ".json"
