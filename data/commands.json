@@ -7,28 +7,16 @@
             "deprecated": null
         },
         {
-            "file": "rsl_season7_beginner-th-ban.json",
-            "name": "Beginner S7 without Triforce Hunt",
-            "argument": "th-ban",
-            "deprecated": "This weight file is deprecated, please use !seed ban=triforce_hunt"
+            "file": "rsl_season7_beginner.json",
+            "name": "Intermediate S7",
+            "argument": "intermediate",
+            "deprecated": null
         },
         {
             "file": "rsl_season6_beginner.json",
             "name": "Beginner S6",
             "argument": "s6",
             "deprecated": null
-        },
-        {
-            "file": "rsl_season6_beginner-th-ban.json",
-            "name": "Beginner S6 without Triforce Hunt",
-            "argument": "s6-th-ban",
-            "deprecated": "This weight file is deprecated, please use !seed s6 ban=triforce_hunt"
-        },
-        {
-            "file": "rsl_season7-erowban.json",
-            "name": "Classic S7 without ER OW",
-            "argument": "classic-erow-ban",
-            "deprecated": "This weight file is deprecated, please use !seed classic ban=shuffle_overworld_entrances"
         },
         {
             "file": "rsl_season7.json",

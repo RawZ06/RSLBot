@@ -127,9 +127,9 @@
             "false": 1
         },
         "shuffle_silver_rupees": {
-            "remove": 1,
-            "vanilla": 16,
-            "dungeon": 1,
+            "remove": 2,
+            "vanilla": 32,
+            "dungeon": 2,
             "overworld": 0,
             "any_dungeon": 0,
             "regional": 1,
@@ -183,14 +183,14 @@
         },
         "gerudo_fortress": {
             "normal": 1,
-            "fast": 1,
-            "open": 1
+            "fast": 2,
+            "open": 2
         },
         "bridge": {
             "open": 1,
-            "vanilla": 1,
-            "stones": 1,
-            "medallions": 1,
+            "vanilla": 2,
+            "stones": 2,
+            "medallions": 2,
             "dungeons": 1,
             "tokens": 0,
             "hearts": 0,
@@ -201,13 +201,13 @@
             "2": 1,
             "3": 2,
             "4": 2,
-            "5": 4,
-            "6": 10
+            "5": 3,
+            "6": 5
         },
         "bridge_stones": {
             "1": 1,
-            "2": 4,
-            "3": 5
+            "2": 2,
+            "3": 3
         },
         "bridge_rewards": {
             "1": 1,
@@ -218,7 +218,7 @@
             "6": 4,
             "7": 4,
             "8": 4,
-            "9": 20
+            "9": 5
         },
         "triforce_hunt": {
             "true": 1,
@@ -229,14 +229,14 @@
             "false": 1
         },
         "trials_random": {
-            "true": 1,
-            "false": 0
+            "true": 0,
+            "false": 1
         },
         "trials": {
-            "0": 1,
-            "1": 1,
-            "2": 1,
-            "3": 1,
+            "0": 2,
+            "1": 2,
+            "2": 2,
+            "3": 2,
             "4": 1,
             "5": 1,
             "6": 1
@@ -253,17 +253,17 @@
         },
         "shuffle_grotto_entrances": {
             "true": 1,
-            "false": 1
+            "false": 2
         },
         "shuffle_dungeon_entrances": {
-            "off": 9,
-            "simple": 9,
-            "all": 2
+            "off": 3,
+            "simple": 1,
+            "all": 0
         },
         "shuffle_bosses": {
             "off": 4,
-            "limited": 0,
-            "full": 1
+            "limited": 1,
+            "full": 0
         },
         "shuffle_overworld_entrances": {
             "true": 0,
@@ -322,7 +322,7 @@
             "12": 0
         },
         "shopsanity": {
-            "off": 2,
+            "off": 7,
             "0": 1,
             "1": 1,
             "2": 1,
@@ -331,23 +331,23 @@
             "random": 2
         },
         "tokensanity": {
-            "off": 6,
-            "dungeons": 5,
-            "overworld": 5,
-            "all": 4
+            "off": 3,
+            "dungeons": 1,
+            "overworld": 1,
+            "all": 0
         },
         "shuffle_scrubs": {
-            "off": 5,
-            "low": 7,
-            "regular": 2,
-            "random": 1
+            "off": 6,
+            "low": 5,
+            "regular": 1,
+            "random": 0
         },
         "shuffle_cows": {
             "true": 1,
-            "false": 1
+            "false": 2
         },
         "shuffle_song_items": {
-            "song": 4,
+            "song": 6,
             "dungeon": 2,
             "any": 4
         },
@@ -386,11 +386,11 @@
             "regional": 1
         },
         "shuffle_smallkeys": {
-            "remove": 2,
-            "vanilla": 2,
-            "dungeon": 2,
-            "overworld": 1,
-            "any_dungeon": 1,
+            "remove": 3,
+            "vanilla": 3,
+            "dungeon": 3,
+            "overworld": 0,
+            "any_dungeon": 0,
             "keysanity": 2,
             "regional": 1
         },
@@ -403,13 +403,13 @@
             "fortress": 0
         },
         "shuffle_bosskeys": {
-            "remove": 2,
-            "vanilla": 2,
-            "dungeon": 2,
+            "remove": 3,
+            "vanilla": 3,
+            "dungeon": 3,
             "overworld": 0,
             "any_dungeon": 0,
             "keysanity": 2,
-            "regional": 2
+            "regional": 1
         },
         "shuffle_ganon_bosskey": {
             "remove": 3,
@@ -431,13 +431,13 @@
             "2": 1,
             "3": 2,
             "4": 2,
-            "5": 4,
-            "6": 10
+            "5": 3,
+            "6": 5
         },
         "ganon_bosskey_stones": {
             "1": 1,
-            "2": 4,
-            "3": 5
+            "2": 2,
+            "3": 3
         },
         "ganon_bosskey_rewards": {
             "1": 1,
@@ -448,7 +448,7 @@
             "6": 4,
             "7": 4,
             "8": 4,
-            "9": 20
+            "9": 5
         },
         "enhance_map_compass": {
             "true": 1,
@@ -464,16 +464,16 @@
             "false": 1
         },
         "no_escape_sequence": {
-            "true": 3,
-            "false": 2
+            "true": 2,
+            "false": 1
         },
         "no_guard_stealth": {
             "true": 1,
             "false": 0
         },
         "no_epona_race": {
-            "true": 6,
-            "false": 2
+            "true": 1,
+            "false": 0
         },
         "skip_some_minigame_phases": {
             "true": 1,
@@ -488,7 +488,7 @@
             "false": 0
         },
         "free_scarecrow": {
-            "true": 1,
+            "true": 2,
             "false": 1
         },
         "chicken_count_random": {
@@ -500,16 +500,16 @@
             "false": 1
         },
         "plant_beans": {
-            "true": 3,
-            "false": 7
+            "true": 1,
+            "false": 1
         },
         "chicken_count": {
             "0": 1,
             "1": 1,
-            "2": 1,
-            "3": 1,
-            "4": 1,
-            "5": 1,
+            "2": 2,
+            "3": 3,
+            "4": 3,
+            "5": 2,
             "6": 1,
             "7": 1
         },
@@ -536,7 +536,7 @@
             "all": 0
         },
         "correct_chest_appearances": {
-            "off": 4,
+            "off": 2,
             "textures": 3,
             "both": 3,
             "classic": 0
@@ -548,18 +548,18 @@
         "shopsanity_prices": {
             "random": 1,
             "random_starting": 1,
-            "random_adult": 1,
-            "random_giant": 1,
+            "random_adult": 0,
+            "random_giant": 0,
             "random_tycoon": 0,
-            "affordable": 2
+            "affordable": 4
         },
         "fast_bunny_hood": {
             "true": 1,
             "false": 0
         },
         "blue_fire_arrows": {
-            "true": 3,
-            "false": 7
+            "true": 1,
+            "false": 1
         },
         "easier_fire_arrow_entry": {
             "true": 0,
@@ -626,7 +626,7 @@
             "half": 3,
             "normal": 20,
             "double": 6,
-            "quadruple": 1,
+            "quadruple": 0,
             "ohko": 0
         },
         "deadly_bonks": {
@@ -657,22 +657,22 @@
             "plentiful": 4,
             "balanced": 19,
             "scarce": 11,
-            "minimal": 6,
+            "minimal": 4,
             "ludicrous": 0
         },
         "junk_ice_traps": {
             "off": 11,
             "normal": 5,
             "on": 3,
-            "mayhem": 1,
+            "mayhem": 0,
             "onslaught": 0,
             "custom_count": 0,
             "custom_percent": 0
         },
         "ice_trap_appearance": {
-            "major_only": 1,
+            "major_only": 0,
             "junk_only": 1,
-            "anything": 1
+            "anything": 0
         },
         "start_with_consumables": {
             "true": 1,
@@ -707,7 +707,7 @@
             "false": 1
         },
         "key_appearance_match_dungeon": {
-            "true": 1,
+            "true": 2,
             "false": 1
         },
         "shuffle_individual_ocarina_notes": {
@@ -715,7 +715,7 @@
             "false": 9
         },
         "ruto_already_f1_jabu": {
-            "true": 1,
+            "true": 2,
             "false": 1
         },
         "shuffle_enemy_spawns": {

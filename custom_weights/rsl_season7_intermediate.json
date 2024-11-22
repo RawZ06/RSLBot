@@ -1,11 +1,11 @@
 {
     "options": {
-        "bridge_tokens_max": 100,
-        "ganon_bosskey_tokens_max": 100,
+        "bridge_tokens_max": 50,
+        "ganon_bosskey_tokens_max": 50,
         "bridge_hearts_min": 4,
         "ganon_bosskey_hearts_min": 4,
-        "bridge_hearts_max": 20,
-        "ganon_bosskey_hearts_max": 20,
+        "bridge_hearts_max": 10,
+        "ganon_bosskey_hearts_max": 10,
         "triforce_goal_per_world_max": 100,
         "starting_items": true,
         "conditionals": {
@@ -19,7 +19,7 @@
             "exclude_mapcompass_info_remove": [true],
             "ohko_starts_with_nayrus": [true],
             "shuffle_valley_lake_exit": [true],
-            "select_one_pots_crates_freestanding": [true, "20%", "1/1/1", "1/1/1"],
+            "select_one_pots_crates_freestanding": [false, "20%", "1/1/1", "1/1/1"],
             "geometrically_draw_dungeon_shortcuts": [true],
             "limit_overworld_entrances_in_mixed_entrance_pools": [true, "20%"],
             "restrict_one_entrance_randomizer": [false],
@@ -73,7 +73,7 @@
         "key_rings": 20,
         "silver_rupee_pouches": 100,
         "dungeon_shortcuts": 0,
-        "mix_entrance_pools": 30,
+        "mix_entrance_pools": 0,
         "spawn_positions": 50,
         "shuffle_child_trade": 20,
         "minor_items_as_major_chest": 0,
@@ -169,8 +169,8 @@
         },
         "open_kakariko": {
             "open": 1,
-            "zelda": 1,
-            "closed": 0
+            "zelda": 0,
+            "closed": 1
         },
         "open_door_of_time": {
             "true": 1,
@@ -247,8 +247,8 @@
             "random": 1
         },
         "shuffle_interior_entrances": {
-            "off": 2,
-            "simple": 1,
+            "off": 4,
+            "simple": 3,
             "all": 1
         },
         "shuffle_grotto_entrances": {
@@ -338,9 +338,9 @@
         },
         "shuffle_scrubs": {
             "off": 5,
-            "low": 5,
-            "regular": 3,
-            "random": 2
+            "low": 7,
+            "regular": 2,
+            "random": 1
         },
         "shuffle_cows": {
             "true": 1,
@@ -472,7 +472,7 @@
             "false": 0
         },
         "no_epona_race": {
-            "true": 3,
+            "true": 6,
             "false": 2
         },
         "skip_some_minigame_phases": {
@@ -514,19 +514,19 @@
             "7": 1
         },
         "big_poe_count_random": {
-            "true": 1,
-            "false": 0
+            "true": 0,
+            "false": 1
         },
         "big_poe_count": {
-            "1": 1,
-            "2": 1,
-            "3": 1,
-            "4": 1,
-            "5": 1,
-            "6": 1,
-            "7": 1,
-            "8": 1,
-            "9": 1,
+            "1": 512,
+            "2": 256,
+            "3": 128,
+            "4": 64,
+            "5": 32,
+            "6": 16,
+            "7": 8,
+            "8": 4,
+            "9": 2,
             "10": 1
         },
         "ocarina_songs": {
@@ -551,7 +551,7 @@
             "random_adult": 1,
             "random_giant": 1,
             "random_tycoon": 0,
-            "affordable": 1
+            "affordable": 2
         },
         "fast_bunny_hood": {
             "true": 1,
@@ -624,9 +624,9 @@
         },
         "damage_multiplier": {
             "half": 3,
-            "normal": 10,
-            "double": 5,
-            "quadruple": 2,
+            "normal": 20,
+            "double": 6,
+            "quadruple": 1,
             "ohko": 0
         },
         "deadly_bonks": {
@@ -707,7 +707,7 @@
             "false": 1
         },
         "key_appearance_match_dungeon": {
-            "true": 0,
+            "true": 1,
             "false": 1
         },
         "shuffle_individual_ocarina_notes": {
@@ -719,8 +719,8 @@
             "false": 1
         },
         "shuffle_enemy_spawns": {
-            "off": 17,
-            "all": 1,
+            "off": 18,
+            "all": 0,
             "bosses": 1,
             "regional": 1
         },
