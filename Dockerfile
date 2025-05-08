@@ -5,10 +5,7 @@ FROM node:20
 WORKDIR /usr/src/app
 
 # Install python3 environment
-RUN apt-get -o Acquire::AllowInsecureRepositories=true \
-            -o Acquire::AllowDowngradeToInsecureRepositories=true \
-            update && \
-    apt-get install -y python3 python3-pip
+RUN apt-get update && apt-get install -y python3 python3-pip
 
 # Install pnpm
 RUN npm install -g pnpm
