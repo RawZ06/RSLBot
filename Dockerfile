@@ -5,7 +5,10 @@ FROM node:20
 WORKDIR /usr/src/app
 
 # Install python3 environment
-RUN apt-get update && apt-get install -y python3 python3-pip
+RUN apt-get -o Acquire::AllowInsecureRepositories=true \
+            -o Acquire::AllowDowngradeToInsecureRepositories=true \
+            update && \
+    apt-get install -y python3 python3-pip
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -23,14 +26,19 @@ COPY tsconfig.json /usr/src/app
 # Clone plando-random-settings
 RUN git clone https://github.com/matthewkirby/plando-random-settings.git /usr/src/app/plando-random-settings
 
+# Clone oot-randomizer franco branch
+RUN git clone https://github.com/RawZ06/OoT-Randomizer.git /usr/src/app/OoT-Randomizer
+
 # Checkout commit
 RUN (cd plando-random-settings && git fetch && git pull && git checkout 2e8d548)
+RUN (cd OoT-Randomizer && git fetch && git pull && git checkout d0a0343)
 
 # Install pip dependencies
 RUN pip3 install requests --break-system-packages
 
 # Copy rom
 COPY rom/* /usr/src/app/plando-random-settings
+COPY rom/* /usr/src/app/OoT-Randomizer
 
 # Copy weights
 COPY custom_weights/* /usr/src/app/plando-random-settings/weights/
