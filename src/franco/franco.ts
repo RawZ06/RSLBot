@@ -1,4 +1,4 @@
-import { Message } from "discord.js";
+import { Message, TextChannel } from "discord.js";
 import { clearDirectory, generate, lsPatches } from "./executeFranco";
 
 export class SeedFrancoGenerator {
@@ -13,7 +13,7 @@ export class SeedFrancoGenerator {
             return await generate();
         } catch (err) {
             console.error(err);
-            this.message.channel.send("An error occurred to generate a seed");
+            (this.message.channel as TextChannel).send("An error occurred to generate a seed");
             return [] as string[];
         }
     }
@@ -23,7 +23,7 @@ export class SeedFrancoGenerator {
             return await lsPatches();
         } catch (err) {
             console.error(err);
-            this.message.channel.send("An error occurred to retrieve patch files");
+            (this.message.channel as TextChannel).send("An error occurred to retrieve patch files");
             return null as string;
         }
     }
@@ -31,10 +31,10 @@ export class SeedFrancoGenerator {
     sendFiles(patchFiles: string[], seed: string): void {
         for (const patch of patchFiles) {
             if (patch.includes(seed) && patch.includes("zpf")) {
-                this.message.channel.send({files: ["OoT-Randomizer/Output/" + patch]});
+                (this.message.channel as TextChannel).send({files: ["OoT-Randomizer/Output/" + patch]});
             }
             if (patch.includes(seed) && patch.includes("Spoiler")) {
-                this.message.channel.send({
+                (this.message.channel as TextChannel).send({
                     files: [{
                         attachment: "OoT-Randomizer/Output/" + patch,
                         name: "SPOILER_" + patch
@@ -50,7 +50,7 @@ export class SeedFrancoGenerator {
                 await clearDirectory(seed);
             } catch (err) {
                 console.error(err);
-                this.message.channel.send("An error occurred to remove a seed generated");
+                (this.message.channel as TextChannel).send("An error occurred to remove a seed generated");
             }
         }, 1000);
     }

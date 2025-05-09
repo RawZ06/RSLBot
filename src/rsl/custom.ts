@@ -1,6 +1,6 @@
 import { Message } from 'discord.js';
 import * as fs from 'fs'
-import { Weight } from './weights/weight';
+import { Weight } from '../weights/weight';
 const settings_allowed = JSON.parse(fs.readFileSync("./data/allsettings.json", "utf-8"))
 
 export function parseArguments(args: string[]) {
@@ -54,7 +54,6 @@ export class CustomSeed {
         const vanilla = this.loadVanilla();
         const RSL = this.loadRSL(weightFile);
         for(let choice of choices) {
-            console.log('>', choice)
             RSL.weights[choice] = vanilla.weights[choice]
         }
         return RSL;

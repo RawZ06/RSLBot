@@ -1,5 +1,5 @@
 import { exec } from 'child_process';
-import { Logger } from './logger/logger';
+import { Logger } from '../logger/logger';
 
 export function generate(weight: string): Promise<string[]> {
     // Execute command python3 plando-random-settings/RandomSettingsGenerator.py --override ${weight}

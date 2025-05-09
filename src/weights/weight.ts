@@ -1,5 +1,5 @@
 import * as fs from 'node:fs'
-import { Message } from "discord.js";
+import { Message, TextChannel } from "discord.js";
 const settings = JSON.parse(fs.readFileSync("./data/commands.json", "utf-8"))
 
 export class Weight {
@@ -28,7 +28,7 @@ export class Weight {
             .map(seed => seed.argument || 'nothing')
             .join(', ');
     
-        message.channel.send(`Type ${argument || 'nothing'} unknown, please regenerate with one of the following arguments: ${possibleArgs}`);
+        (message.channel as TextChannel).send(`Type ${argument || 'nothing'} unknown, please regenerate with one of the following arguments: ${possibleArgs}`);
         
         throw new Error(`Type ${argument || 'nothing'} unknown, please regenerate with one of the following arguments: ${possibleArgs}`);
     }

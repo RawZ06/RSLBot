@@ -1,56 +1,58 @@
-# Node project
-FROM node:20
+# Node.js + Alpine base image
+FROM node:20-alpine
 
-# Create app directory
+# Install dependencies: python3, pip, git, make, g++, etc.
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    git \
+    build-base \
+    curl
+
+# Set working directory
 WORKDIR /usr/src/app
-
-# Install python3 environment
-RUN apt-get update && apt-get install -y python3 python3-pip
 
 # Install pnpm
 RUN npm install -g pnpm
 
-COPY package.json /usr/src/app/
-COPY pnpm-lock.yaml /usr/src/app/
-
-# Install app dependencies
+# Copy lockfiles and install deps
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 
-# Bundle app source
-COPY src /usr/src/app/src
-COPY tsconfig.json /usr/src/app
+# Copy sources and config
+COPY src ./src
+COPY tsconfig.json ./
 
 # Clone plando-random-settings
-RUN git clone https://github.com/matthewkirby/plando-random-settings.git /usr/src/app/plando-random-settings
+RUN git clone https://github.com/matthewkirby/plando-random-settings.git ./plando-random-settings
 
 # Clone oot-randomizer franco branch
-RUN git clone https://github.com/RawZ06/OoT-Randomizer.git /usr/src/app/OoT-Randomizer
+RUN git clone https://github.com/RawZ06/OoT-Randomizer.git ./OoT-Randomizer
 
-# Checkout commit
-RUN (cd plando-random-settings && git fetch && git pull && git checkout 2e8d548)
-RUN (cd OoT-Randomizer && git fetch && git pull && git checkout d0a0343)
+# Checkout specific commits
+RUN git -C plando-random-settings fetch && git -C plando-random-settings checkout 2e8d548
+RUN git -C OoT-Randomizer fetch && git -C OoT-Randomizer checkout d0a0343
 
 # Install pip dependencies
-RUN pip3 install requests --break-system-packages
+RUN pip3 install requests --no-cache-dir --break-system-packages
 
-# Copy rom
-COPY rom/* /usr/src/app/plando-random-settings
-COPY rom/* /usr/src/app/OoT-Randomizer
+# Copy ROMs
+COPY rom/* ./plando-random-settings/
+COPY rom/* ./OoT-Randomizer/
 
 # Copy weights
-COPY custom_weights/* /usr/src/app/plando-random-settings/weights/
-COPY custom_weights /usr/src/app/custom_weights
+COPY custom_weights/* ./plando-random-settings/weights/
+COPY custom_weights ./custom_weights
 
-# Copy data
-COPY data /usr/src/app/data
+# Copy data and env
+COPY data ./data
+COPY .env ./
 
-# Copy env
-COPY .env /usr/src/app
-
-# debug
-RUN ls -lah /usr/src/app
+# Debug
+RUN ls -lah .
 
 # Build the app
 RUN pnpm run tsc
 
+# Start the app
 CMD [ "node", "dist/index.js" ]

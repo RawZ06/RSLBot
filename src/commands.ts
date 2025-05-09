@@ -1,7 +1,7 @@
-import { AttachmentBuilder, Message } from "discord.js";
-import { SeedGenerator } from "./generate";
-import * as Shuffle from "./shuffle";
-import * as CustomSeed from "./custom"
+import { AttachmentBuilder, Message, TextChannel } from "discord.js";
+import { SeedGenerator } from "./rsl/generate";
+import * as Shuffle from "./shuffle/shuffle";
+import * as CustomSeed from "./rsl/custom"
 import { v4 as uuidv4 } from 'uuid';
 import { Logger } from "./logger/logger";
 import * as fs from 'fs'
@@ -12,14 +12,14 @@ const helpMessageCS = fs.readFileSync("./data/help-cs.txt", "utf-8")
 async function generator(seedGenerator: SeedGenerator, message: Message, weightFile: string) {
     const result = await seedGenerator.generateSeed(weightFile)
     if (result.length === 0) {
-        console.error("No seed generated, no result")
-        message.channel.send("No seed generated, please retry or contact RawZ06")
+        console.error("No seed generated, no result");
+        (message.channel as TextChannel).send("No seed generated, please retry or contact RawZ06")
         return;
     }
     const patches = await seedGenerator.getPatcheFiles();
     if (patches === null) {
-        console.error("No seed generated, no patch file")
-        message.channel.send("No seed generated, please retry or contact RawZ06")
+        console.error("No seed generated, no patch file");
+        (message.channel as TextChannel).send("No seed generated, please retry or contact RawZ06")
         return;
     }
     const patchFiles = patches.split("\n");
@@ -32,14 +32,14 @@ async function generator(seedGenerator: SeedGenerator, message: Message, weightF
 async function generatorFranco(seedGenerator: SeedFrancoGenerator, message: Message) {
     const result = await seedGenerator.generateSeed()
     if (result.length === 0) {
-        console.error("No seed generated, no result")
-        message.channel.send("No seed generated, please retry or contact RawZ06")
+        console.error("No seed generated, no result");
+        (message.channel as TextChannel).send("No seed generated, please retry or contact RawZ06")
         return;
     }
     const patches = await seedGenerator.getPatcheFiles();
     if (patches === null) {
-        console.error("No seed generated, no patch file")
-        message.channel.send("No seed generated, please retry or contact RawZ06")
+        console.error("No seed generated, no patch file");
+        (message.channel as TextChannel).send("No seed generated, please retry or contact RawZ06")
         return;
     }
     const patchFiles = patches.split("\n");
@@ -54,19 +54,19 @@ export async function executeCommand(message: Message, command: string, args: st
     const francoGenerator = new SeedFrancoGenerator(message);
     switch (command) {
         case "ping":
-            Logger.info(`${message.author.username} : ${message.content}`)
-            message.channel.send("pong!");
+            Logger.info(`${message.author.username} : ${message.content}`);
+            (message.channel as TextChannel).send("pong!");
             break;
         case "!seed":
             Logger.info(`${message.author.username} : ${message.content}`)
             try {
                 const weightFile = seedGenerator.getWeightFile(args);
-                const weightMessage = seedGenerator.getWeightMessage(args)
-                message.channel.send(`This command !!seed is deprecated, please use !seed instead, you can use this command if !seed doesn't work`);
-                message.channel.send(`Seed generating with weights ${weightMessage}`);
+                const weightMessage = seedGenerator.getWeightMessage(args);
+                (message.channel as TextChannel).send(`This command !!seed is deprecated, please use !seed instead, you can use this command if !seed doesn't work`);
+                (message.channel as TextChannel).send(`Seed generating with weights ${weightMessage}`);
                 generator(seedGenerator, message, weightFile)
             } catch (e) {
-                message.channel.send(e.toString())
+                (message.channel as TextChannel).send(e.toString())
             }
             break;
         case "shuffle":
@@ -76,15 +76,15 @@ export async function executeCommand(message: Message, command: string, args: st
                 const { count, noOutput, weight } = Shuffle.parseArguments(args);
                 if (weight) {
                     const attachmentBuilder = new AttachmentBuilder(Buffer.from(shuffle.getWeights(), 'utf-8'), { name: 'weights.csv' });
-                    message.channel.send({ files: [attachmentBuilder] });
+                    (message.channel as TextChannel).send({ files: [attachmentBuilder] });
                     return;
                 }
                 const choices = shuffle.getRandomSettings(count);
                 if (choices === null) {
-                    message.channel.send("Impossible to generate more than 57 settings, aborted")
+                    (message.channel as TextChannel).send("Impossible to generate more than 57 settings, aborted")
                     return;
                 }
-                message.channel.send("Seed generating with only this settings : || " + choices.toString() + " ||")
+                (message.channel as TextChannel).send("Seed generating with only this settings : || " + choices.toString() + " ||")
                 if (!noOutput) {
                     const weights = shuffle.generateWeights(choices);
                     const uuid = uuidv4();
@@ -93,10 +93,10 @@ export async function executeCommand(message: Message, command: string, args: st
                     await generator(seedGenerator, message, filename)
                     shuffle.rmFile(filename);
                 } else {
-                    message.channel.send("Seed no generated, because no-output is on")
+                    (message.channel as TextChannel).send("Seed no generated, because no-output is on")
                 }
             } catch (e) {
-                message.channel.send(e.toString())
+                (message.channel as TextChannel).send(e.toString())
             }
             break;
         case "seed":
@@ -105,7 +105,7 @@ export async function executeCommand(message: Message, command: string, args: st
                 const custom = new CustomSeed.CustomSeed()
                 const { typeSeed, ban, list, help: helpCS } = CustomSeed.parseArguments(args);
                 if(list) {
-                    message.channel.send({
+                    (message.channel as TextChannel).send({
                         files: [{
                             attachment: "data/allsettings.json",
                             name: "settings_custom.json"
@@ -114,19 +114,19 @@ export async function executeCommand(message: Message, command: string, args: st
                     return;
                 }
                 if(helpCS) {
-                    message.channel.send(helpMessageCS);
+                    (message.channel as TextChannel).send(helpMessageCS);
                     return;
                 }
                 const banned = custom.getRandomSettings(ban);
                 if(banned && banned.length) {
-                    message.channel.send(`Seed generating ${Weight.getWeightMessage(typeSeed)} without : ${banned.toString()}`)
+                    (message.channel as TextChannel).send(`Seed generating ${Weight.getWeightMessage(typeSeed)} without : ${banned.toString()}`)
                 }
                 else {
-                    message.channel.send(`Seed generating ${Weight.getWeightMessage(typeSeed)}`)
+                    (message.channel as TextChannel).send(`Seed generating ${Weight.getWeightMessage(typeSeed)}`)
                 }
                 const deprecated = Weight.getDeprecated(typeSeed);
                 if(deprecated) {
-                    message.channel.send("# " + deprecated)
+                    (message.channel as TextChannel).send("# " + deprecated)
                 }
                 const weights = custom.generateWeights(message, typeSeed, banned);
                 const uuid = uuidv4();
@@ -135,15 +135,16 @@ export async function executeCommand(message: Message, command: string, args: st
                 await generator(seedGenerator, message, filename)
                 custom.rmFile(filename);
             } catch (e) {
-                message.channel.send(e.toString())
+                (message.channel as TextChannel).send(e.toString())
             }
             break;
         case "franco":
                 Logger.info(`${message.author.username} : ${message.content}`)
                 try {
+                    (message.channel as TextChannel).send(`Seed generating Franco`)
                     await generatorFranco(francoGenerator, message)
                 } catch (e) {
-                    message.channel.send(e.toString())
+                    (message.channel as TextChannel).send(e.toString())
                 }
                 break;
         default:
