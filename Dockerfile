@@ -30,7 +30,7 @@ RUN git clone https://github.com/matthewkirby/plando-random-settings.git ./pland
 RUN git clone https://github.com/RawZ06/OoT-Randomizer.git ./OoT-Randomizer
 
 # Checkout specific commits
-RUN git -C plando-random-settings fetch && git -C plando-random-settings checkout 2e8d548
+RUN git -C plando-random-settings fetch && git -C plando-random-settings checkout 50813f8
 RUN git -C OoT-Randomizer fetch && git -C OoT-Randomizer checkout d0a0343
 
 # Install pip dependencies
