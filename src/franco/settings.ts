@@ -274,7 +274,7 @@ const starting_inventory = [
         "farores_wind",
         "lens",
         "zeldas_letter"
-],
+];
 
 export function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
