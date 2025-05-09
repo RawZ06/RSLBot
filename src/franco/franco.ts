@@ -8,9 +8,9 @@ export class SeedFrancoGenerator {
         this.message = message;
     }
 
-    async generateSeed(): Promise<string[]> {
+    async generateSeed(settings: Record<string, any> = {}): Promise<string[]> {
         try {
-            return await generate();
+            return await generate(settings);
         } catch (err) {
             console.error(err);
             (this.message.channel as TextChannel).send("An error occurred to generate a seed");

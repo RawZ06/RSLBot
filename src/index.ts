@@ -3,12 +3,8 @@ import 'dotenv/config'
 // Require the necessary discord.js classes
 import {ActivityType, Client, Events, GatewayIntentBits, Partials} from 'discord.js';
 import { Logger } from "./logger/logger";
-import { init } from "./franco/init";
 
 const token = process.env.TOKEN;
-
-//Init franco
-init()
 
 // Create a new client instance
 const client = new Client({

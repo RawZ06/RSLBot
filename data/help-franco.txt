@@ -1,0 +1,77 @@
+# HELP : `!franco` Command Help
+
+The `!franco` command allows you to generate franco tournament seeds.
+
+## How to Use:
+
+- **Basic Usage:**  
+  To generate a seed, use the command followed by options for the type and any settings you want to pick or number of settings to pick.
+
+  **Example:**  
+  `!franco count=4`  
+  This will generate a seed franco with 4 settings picked.
+
+  `!franco settings=open_deku;gerudo_card;token_all;warps`  
+  This will generate a seed franco with open deku, gerudo's card shuffle, tokensanity all and warp+owls spawn shuffle 
+
+## Available Options:
+
+- **Count:**
+  Number of picked settings if you want to randomize picked settings
+
+  **Example:**  
+  `count=4`  
+  This will pick 4 settings.
+
+- **Mode:**
+  Game mode for random picked settings (easy, hard, mq) - Default EASY
+
+  **Example:**  
+  `mode=easy`  
+  This will pick only easy settings.
+
+  `mode=mq`  
+  This will pick hard settings and random number of MQ dungeons if mq number is not specified.
+
+- **MQ:**
+  Specify number of MQ dungeons
+
+  **Example:**  
+  `mq=3`  
+  This will pick 3 mq dungeons
+
+
+- **Pick Settings:**  
+  You can pick multiple settings by specifying them after `settings=`, separated by semicolons (`;`).
+
+  **Example:**  
+  `settings=ocarina;songsanity;bombchu_bag;scrubsanity`  
+  This will pick *ocarina shuffle and free scarecrow*, *songsanity all*, *bombchu bag and bombchu drop*, and *scrubsanity affordable*.
+
+  If nothing is specified, a simple franco will be generated
+
+- **List Settings:**  
+  To see the full list of available settings that you can ban, use:  
+  `!franco list`
+
+- **Help:**  
+  To display this help message, use:  
+  `!franco help`
+
+## Quick Example:
+
+To generate a franco with 6 picks random with hard settings
+`!franco count=6 mode=hard`
+
+To generate a franco with 6 picks random with mq dungeons
+`!franco count=6 mode=mq`
+
+To generate a franco with 6 picks random with 3 mq dungeons
+`!franco count=6 mode=mq mq=3`
+
+To generate a franco with *ocarina shuffle and free scarecrow*, *songsanity all*, *bombchu bag and bombchu drop*, and *scrubsanity affordable* and 3 mq dungeons
+`!franco settings=ocarina;songsanity;bombchu_bag;scrubsanity mode=mq mq=3`
+
+---
+
+This message gives users a clear, step-by-step guide on how to use the command, what options are available, and includes examples to help them understand how it works.
