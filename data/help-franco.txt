@@ -57,21 +57,3 @@ The `!franco` command allows you to generate franco tournament seeds.
 - **Help:**  
   To display this help message, use:  
   `!franco help`
-
-## Quick Example:
-
-To generate a franco with 6 picks random with hard settings
-`!franco count=6 mode=hard`
-
-To generate a franco with 6 picks random with mq dungeons
-`!franco count=6 mode=mq`
-
-To generate a franco with 6 picks random with 3 mq dungeons
-`!franco count=6 mode=mq mq=3`
-
-To generate a franco with *ocarina shuffle and free scarecrow*, *songsanity all*, *bombchu bag and bombchu drop*, and *scrubsanity affordable* and 3 mq dungeons
-`!franco settings=ocarina;songsanity;bombchu_bag;scrubsanity mode=mq mq=3`
-
----
-
-This message gives users a clear, step-by-step guide on how to use the command, what options are available, and includes examples to help them understand how it works.
