@@ -1,6 +1,6 @@
-import { Message } from "discord.js";
+import { Message, TextChannel } from "discord.js";
 import { clearDirectory, generate, lsPatches } from "./execute";
-import { Weight } from "./weights/weight";
+import { Weight } from "../weights/weight";
 
 export class SeedGenerator {
     private message: Message;
@@ -22,7 +22,7 @@ export class SeedGenerator {
             return await generate(weightFile);
         } catch (err) {
             console.error(err);
-            this.message.channel.send("An error occurred to generate a seed");
+            (this.message.channel as TextChannel).send("An error occurred to generate a seed");
             return [] as string[];
         }
     }
@@ -32,7 +32,7 @@ export class SeedGenerator {
             return await lsPatches();
         } catch (err) {
             console.error(err);
-            this.message.channel.send("An error occurred to retrieve patch files");
+            (this.message.channel as TextChannel).send("An error occurred to retrieve patch files");
             return null as string;
         }
     }
@@ -40,10 +40,10 @@ export class SeedGenerator {
     sendFiles(patchFiles: string[], seed: string): void {
         for (const patch of patchFiles) {
             if (patch.includes(seed) && patch.includes("zpf")) {
-                this.message.channel.send({files: ["plando-random-settings/patches/" + patch]});
+                (this.message.channel as TextChannel).send({files: ["plando-random-settings/patches/" + patch]});
             }
             if (patch.includes(seed) && patch.includes("Spoiler")) {
-                this.message.channel.send({
+                (this.message.channel as TextChannel).send({
                     files: [{
                         attachment: "plando-random-settings/patches/" + patch,
                         name: "SPOILER_" + patch
@@ -59,7 +59,7 @@ export class SeedGenerator {
                 await clearDirectory(seed);
             } catch (err) {
                 console.error(err);
-                this.message.channel.send("An error occurred to remove a seed generated");
+                (this.message.channel as TextChannel).send("An error occurred to remove a seed generated");
             }
         }, 1000);
     }
