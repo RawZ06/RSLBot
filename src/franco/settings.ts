@@ -5,7 +5,6 @@ const SETTINGS = {
     start_weird_egg: {
         spawn_positions: [],
         shuffle_child_trade: ['Weird Egg'],
-        starting_inventory: [],
     },
     keysy: {
         shuffle_smallkeys: "remove"
@@ -270,6 +269,13 @@ const easyList = [
     "precompleted_3"
   ]
 
+const starting_inventory = [
+        "ocarina",
+        "farores_wind",
+        "lens",
+        "zeldas_letter"
+],
+
 export function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -336,6 +342,7 @@ export function getSettingsFromChoices(choices: string[], mq = 0) {
         throw new Error('Two settings are incompatible')
     }
     let settings = {} as Record<string, any>
+    const start = [...starting_inventory]
     const item_pool = choices.includes('minimal') ? 'minimal' : choices.includes('scarce') ? 'scarce' : 'balanced';
 
     for(let choice of choices) {
@@ -350,6 +357,17 @@ export function getSettingsFromChoices(choices: string[], mq = 0) {
         settings = {...settings, ...SETTINGS['dungeon_er_mixed']}
     }
 
+    if(choices.includes('start_weird_egg')) {
+        start.splice(start.indexOf("zeldas_letter"), 1)
+    }
+
+    if(choices.includes('ocarina')) {
+        start.splice(start.indexOf("ocarina"), 1)
+    }
+
+    settings['starting_inventory'] = start;
+
+  
     if(mq > 0) {
         settings = {...settings, ...{
             mq_dungeons_mode: 'count',
