@@ -5,7 +5,8 @@ const SETTINGS = {
     start_weird_egg: {
         spawn_positions: [],
         shuffle_child_trade: ['Weird Egg'],
-        start_with_consumables: false
+        start_with_consumables: false,
+        starting_equipment: [],
     },
     keysy: {
         shuffle_smallkeys: "remove"
