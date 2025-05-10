@@ -163,7 +163,13 @@ export async function executeCommand(message: Message, command: string, args: st
                     if(numberOfMQ > 0) {
                         (message.channel as TextChannel).send(`Add ${numberOfMQ} dungeon MQ`)
                     }
+                    
                     const params = getSettingsFromChoices(picked, numberOfMQ);
+
+                    if(params.triforce_hunt) {
+                        (message.channel as TextChannel).send(`Number of piece to find (TH) : ${params.triforce_goal_per_world}`)
+                    }
+
                     await runGenerator(francoGenerator, message, params)
                 } catch (e) {
                     (message.channel as TextChannel).send(e.toString())

@@ -5,6 +5,7 @@ const SETTINGS = {
     start_weird_egg: {
         spawn_positions: [],
         shuffle_child_trade: ['Weird Egg'],
+        start_with_consumables: false
     },
     keysy: {
         shuffle_smallkeys: "remove"
@@ -186,15 +187,30 @@ const SETTINGS = {
     },
     precompleted_1: {
         empty_dungeons_mode: 'count',
-        empty_dungeons_count: 1
+        empty_dungeons_count: 1,
+        enhance_map_compass: true,
+        bridge: 'dungeons',
+        bridge_rewards: 9,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 9
     },
     precompleted_2: {
         empty_dungeons_mode: 'count',
-        empty_dungeons_count: 2
+        empty_dungeons_count: 2,
+        enhance_map_compass: true,
+        bridge: 'dungeons',
+        bridge_rewards: 9,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 9
     },
     precompleted_3: {
         empty_dungeons_mode: 'count',
-        empty_dungeons_count: 3
+        empty_dungeons_count: 3,
+        enhance_map_compass: true,
+        bridge: 'dungeons',
+        bridge_rewards: 9,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 9
     }
 }
 
@@ -358,7 +374,7 @@ export function getSettingsFromChoices(choices: string[], mq = 0) {
     }
 
     if(choices.includes('start_weird_egg')) {
-        start.splice(start.indexOf("zeldas_letter"), 1)
+        start.splice(start.indexOf("zeldas_letter"), 1);
     }
 
     if(choices.includes('ocarina')) {
