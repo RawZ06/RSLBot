@@ -126,6 +126,8 @@ const SETTINGS = {
     bridge_6_med: {
         bridge: 'medallions',
         bridge_medallions: 6,
+        shuffle_ganon_bosskey: 'medallions',
+        ganon_bosskey_medallions: 6
     },
     bridge_4_med_bgk_6_med: {
         bridge: 'medallions',
@@ -153,38 +155,56 @@ const SETTINGS = {
     },
     bridge_1_stone: {
         bridge: 'stones',
-        bridge_stones: 1
+        bridge_stones: 1,
+        shuffle_ganon_bosskey: 'medallions',
+        ganon_bosskey_medallions: 6
     },
     bridge_2_stones: {
         bridge: 'stones',
-        bridge_stones: 2
+        bridge_stones: 2,
+        shuffle_ganon_bosskey: 'medallions',
+        ganon_bosskey_medallions: 6
     },
     bridge_3_stones: {
         bridge: 'stones',
-        bridge_stones: 3
+        bridge_stones: 3,
+        shuffle_ganon_bosskey: 'medallions',
+        ganon_bosskey_medallions: 6
     },
     bridge_vanilla: {
         bridge: 'vanilla',
+        shuffle_ganon_bosskey: 'medallions',
+        ganon_bosskey_medallions: 6
     },
     bridge_5_dj: {
         bridge: 'dungeons',
-        bridge_rewards: 5
+        bridge_rewards: 5,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 5
     },
     bridge_6_dj: {
         bridge: 'dungeons',
-        bridge_rewards: 6
+        bridge_rewards: 6,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 6
     },
     bridge_7_dj: {
         bridge: 'dungeons',
-        bridge_rewards: 7
+        bridge_rewards: 7,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 7
     },
     bridge_8_dj: {
         bridge: 'dungeons',
-        bridge_rewards: 8
+        bridge_rewards: 8,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 8
     },
     bridge_9_dj: {
         bridge: 'dungeons',
-        bridge_rewards: 9
+        bridge_rewards: 9,
+        shuffle_ganon_bosskey: 'dungeon',
+        ganon_bosskey_rewards: 9
     },
     precompleted_1: {
         empty_dungeons_mode: 'count',
