@@ -138,7 +138,7 @@ const SETTINGS = {
     bridge_4_med_bgk_6_dj: {
         bridge: 'medallions',
         bridge_medallions: 4,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 6
     },
     bridge_5_med_bgk_6_med: {
@@ -150,7 +150,7 @@ const SETTINGS = {
     bridge_5_med_bgk_6_dj: {
         bridge: 'medallions',
         bridge_medallions: 5,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 6
     },
     bridge_1_stone: {
@@ -179,31 +179,31 @@ const SETTINGS = {
     bridge_5_dj: {
         bridge: 'dungeons',
         bridge_rewards: 5,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 5
     },
     bridge_6_dj: {
         bridge: 'dungeons',
         bridge_rewards: 6,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 6
     },
     bridge_7_dj: {
         bridge: 'dungeons',
         bridge_rewards: 7,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 7
     },
     bridge_8_dj: {
         bridge: 'dungeons',
         bridge_rewards: 8,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 8
     },
     bridge_9_dj: {
         bridge: 'dungeons',
         bridge_rewards: 9,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 9
     },
     precompleted_1: {
@@ -212,7 +212,7 @@ const SETTINGS = {
         enhance_map_compass: true,
         bridge: 'dungeons',
         bridge_rewards: 9,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 9
     },
     precompleted_2: {
@@ -221,7 +221,7 @@ const SETTINGS = {
         enhance_map_compass: true,
         bridge: 'dungeons',
         bridge_rewards: 9,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 9
     },
     precompleted_3: {
@@ -230,7 +230,7 @@ const SETTINGS = {
         enhance_map_compass: true,
         bridge: 'dungeons',
         bridge_rewards: 9,
-        shuffle_ganon_bosskey: 'dungeon',
+        shuffle_ganon_bosskey: 'dungeons',
         ganon_bosskey_rewards: 9
     }
 }
