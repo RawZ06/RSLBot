@@ -318,7 +318,7 @@ export function randomInteger(min, max) {
 }
 
 function triforce_hunt(item_pool) {
-    const number_th = randomInteger(50, 100);
+    const number_th = randomInteger(30, 30);
     const item_pool_multiplier = item_pool === 'minimal' ? 1 : item_pool === 'scarce' ? 1.25 : 1.5
     
     return {
