@@ -260,7 +260,18 @@ const INCOMPATIBILITY = [
         "precompleted_1",
         "precompleted_2",
         "precompleted_3"
-      ]
+    ],
+    ["triforce", "keysanity_all"],
+    ["triforce", "keyring_all"],
+    ["triforce", "boss_souls"],
+    ["triforce", "souls"],
+    ["triforce", "regional_souls"],
+    ["triforce", "keyring_regional"],
+    ["triforce", "one_major"],
+    ["one_major", "keysanity_all"],
+    ["one_major", "keyring_regional"],
+    ["one_major", "keyring_all"],
+    ["one_major", "souls"],
 ]
 
 const easyList = [
@@ -318,7 +329,7 @@ export function randomInteger(min, max) {
 }
 
 function triforce_hunt(item_pool) {
-    const number_th = randomInteger(30, 30);
+    const number_th = randomInteger(1, 50);
     const item_pool_multiplier = item_pool === 'minimal' ? 1 : item_pool === 'scarce' ? 1.25 : 1.5
     
     return {
