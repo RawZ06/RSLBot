@@ -23,6 +23,8 @@ export function parseArguments(args: string[]) {
             result.mode = arg.slice('mode='.length)
         } else if(arg.startsWith('mq=')) {
             result.mq = parseInt(arg.slice('mq='.length))
+        } else {
+            throw new Error(`Invalid argument '${arg}' please use !franco help to show how to use it`)
         }
     });
 

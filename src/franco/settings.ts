@@ -261,16 +261,16 @@ const INCOMPATIBILITY = [
         "precompleted_2",
         "precompleted_3"
     ],
-    ["triforce", "keysanity_all"],
-    ["triforce", "keyring_all"],
-    ["triforce", "boss_souls"],
-    ["triforce", "souls"],
-    ["triforce", "regional_souls"],
-    ["triforce", "keyring_regional"],
-    ["triforce", "one_major"],
-    ["one_major", "keysanity_all"],
-    ["one_major", "keyring_regional"],
-    ["one_major", "keyring_all"],
+    // ["triforce", "keysanity_all"],
+    // ["triforce", "keyring_all"],
+    // ["triforce", "boss_souls"],
+    // ["triforce", "souls"],
+    // ["triforce", "regional_souls"],
+    // ["triforce", "keyring_regional"],
+    // ["triforce", "one_major"],
+    // ["one_major", "keysanity_all"],
+    // ["one_major", "keyring_regional"],
+    // ["one_major", "keyring_all"],
     ["one_major", "souls"],
 ]
 
@@ -324,12 +324,34 @@ const starting_inventory = [
         "zeldas_letter"
 ];
 
+const triforce_add = {
+    one_major: -10,
+    keysanity_all: -5,
+    keysy: 5,
+    token_ow: 5,
+    token_all: 5,
+    cowsanity: 5,
+    shops: 10,
+    scrubsanity: 10,
+    minimal: 10,
+    scarce: 10,
+    pot: 15,
+    crate: 10,
+    boss_souls: -5,
+    regional_souls: -10,
+    souls: -25
+}
+
 export function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function triforce_hunt(item_pool) {
-    const number_th = randomInteger(1, 50);
+function triforce_hunt(item_pool: 'minimal'|'scarce'|'balanced', settings: string[]) {
+    let number_th = 45;
+    for(let setting of settings) {
+        const value = triforce_add[setting] ?? 0;
+        number_th += value;
+    }
     const item_pool_multiplier = item_pool === 'minimal' ? 1 : item_pool === 'scarce' ? 1.25 : 1.5
     
     return {
@@ -394,8 +416,11 @@ export function getSettingsFromChoices(choices: string[], mq = 0) {
     const item_pool = choices.includes('minimal') ? 'minimal' : choices.includes('scarce') ? 'scarce' : 'balanced';
 
     for(let choice of choices) {
-        if(choice === 'triforce') {
-            settings = {...settings, ...triforce_hunt(item_pool)}
+        if(!SETTINGS[choice]) {
+            throw new Error(`Invalid setting ${choice}, please use !franco list to show list`);
+        }
+        else if(choice === 'triforce') {
+            settings = {...settings, ...triforce_hunt(item_pool, choices)}
         } else {
             settings = {...settings, ...SETTINGS[choice]}
         }

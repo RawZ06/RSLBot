@@ -133,16 +133,16 @@ export async function executeCommand(message: Message, command: string, args: st
             break;
         case "franco":
                 Logger.info(`${message.author.username} : ${message.content}`)
-                const {help, list, count, settings, mode, mq} = Franco.parseArguments(args)
-                if(help) {
-                    (message.channel as TextChannel).send(helpMessageFranco);
-                    return;
-                }
-                if(list) {
-                    (message.channel as TextChannel).send(settingList().join('\n'));
-                    return;
-                }
                 try {
+                    const {help, list, count, settings, mode, mq} = Franco.parseArguments(args)
+                    if(help) {
+                        (message.channel as TextChannel).send(helpMessageFranco);
+                        return;
+                    }
+                    if(list) {
+                        (message.channel as TextChannel).send(settingList().join('\n'));
+                        return;
+                    }
                     let picked;
                     if(settings) {
                         Logger.info(`Generating settings with specified settings : ${settings.join(';')}`);
