@@ -267,11 +267,13 @@ const INCOMPATIBILITY = [
     // ["triforce", "souls"],
     // ["triforce", "regional_souls"],
     // ["triforce", "keyring_regional"],
-    // ["triforce", "one_major"],
+    ["triforce", "one_major"],
     // ["one_major", "keysanity_all"],
     // ["one_major", "keyring_regional"],
     // ["one_major", "keyring_all"],
     ["one_major", "souls"],
+    ["one_major", "boss_souls"],
+    ["one_major", "regional_souls"],
 ]
 
 const easyList = [
