@@ -31,7 +31,7 @@ RUN git clone https://github.com/RawZ06/OoT-Randomizer.git ./OoT-Randomizer
 
 # Checkout specific commits
 RUN git -C plando-random-settings fetch && git -C plando-random-settings checkout 50813f8
-RUN git -C OoT-Randomizer fetch && git -C OoT-Randomizer checkout d0a0343
+RUN git -C OoT-Randomizer fetch && git -C OoT-Randomizer checkout d40d5f4
 
 # Install pip dependencies
 RUN pip3 install requests --no-cache-dir --break-system-packages
