@@ -106,6 +106,9 @@ const SETTINGS = {
     trials: {
         trials_random: true,
     },
+    frogs: {
+        shuffle_frog_song_rupees: true,
+    },
     minimal: {
         item_pool_value: 'minimal'
     },
@@ -300,6 +303,7 @@ const easyList = [
     "boss_souls",
     "triforce",
     "boss_er",
+    "frogs",
     "bridge_6_med",
     "bridge_4_med_bgk_6_med",
     "bridge_4_med_bgk_6_dj",
