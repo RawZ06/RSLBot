@@ -29,6 +29,12 @@
             "name": "Classic S6",
             "argument": "classic-s6",
             "deprecated": null
+        },
+        {
+            "file": "rsl_potsl.json",
+            "name": "PotSL",
+            "argument": "potsl",
+            "deprecated": null
         }
     ]
 }
