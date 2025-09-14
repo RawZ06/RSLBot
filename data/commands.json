@@ -31,9 +31,9 @@
             "deprecated": null
         },
         {
-            "file": "rsl_potsl.json",
-            "name": "PotSL",
-            "argument": "potsl",
+            "file": "rsl_pot.json",
+            "name": "PoT",
+            "argument": "pot",
             "deprecated": null
         }
     ]
