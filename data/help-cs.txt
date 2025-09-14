@@ -14,7 +14,7 @@ The `!seed` command allows you to generate seeds, tailored to your preferences. 
 ## Available Options:
 
 - **Type:**
-    - `potsl` → Generates a **Pot Of Time** seed.
+    - `pot` → Generates a **Pot Of Time** seed.
     - `intermediate` → Generates a **Intermediate S7** seed. It's old version of Beginner S7.
     - `classic` → Generates a **RSL S7** seed.
     - If no type is specified, it will default to a **Beginner S7** seed. It's a new version of Beginner, easier.
