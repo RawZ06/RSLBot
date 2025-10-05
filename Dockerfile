@@ -37,8 +37,8 @@ RUN git -C OoT-Randomizer fetch && git -C OoT-Randomizer checkout 37f3426
 RUN pip3 install requests --no-cache-dir --break-system-packages
 
 # Copy ROMs
-COPY rom/* ./plando-random-settings/
-COPY rom/* ./OoT-Randomizer/
+# COPY rom/* ./plando-random-settings/
+# COPY rom/* ./OoT-Randomizer/
 
 # Copy weights
 COPY custom_weights/* ./plando-random-settings/weights/
