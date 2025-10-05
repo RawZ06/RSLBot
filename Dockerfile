@@ -10,7 +10,7 @@ RUN apk add --no-cache \
     curl
 
 # Set working directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install pnpm
 RUN npm install -g pnpm
