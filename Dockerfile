@@ -10,7 +10,7 @@ RUN apk add --no-cache \
     curl
 
 # Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -49,7 +49,7 @@ COPY data ./data
 COPY .env ./
 
 # Debug
-RUN ls -lah .
+RUN pwd && ls -lah . && ls -lah ./plando-random-settings && ls -lah ./OoT-Randomizer
 
 # Build the app
 RUN pnpm run tsc
